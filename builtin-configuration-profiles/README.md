@@ -1,0 +1,3 @@
+<h1 align="center">Built-In Configuration Profiles</h1> 
+
+<p>Utilzing Jamf's built in configuration profiles is a easy way for Admins to harden their fleet quickly throught the Jamf Pro UI. However the issue comes when you want to tweak an profiles you have already deployed. If you make a change in one area, Jamf may make a large number of updates alongside it. So it's good to be very clear on what you want to change and work on have multiple config profiles so when you make changes the blast radius is minimized.<p>
