@@ -1,0 +1,59 @@
+2.4.1 Ensure Show Wi-Fi status in Menu Bar Is Enabled
+(Automated)
+Profile Applicability:
+• Level 1
+
+Description:
+
+The Wi-Fi status in the menu bar indicates if the system's wireless internet capabilities
+are enabled. If so, the system will scan for available wireless networks in order to
+connect. At the time of this revision, all computers Apple builds have wireless network
+capability, which has not always been the case. This control only pertains to systems
+that have a wireless NIC available. Operating systems running in a virtual environment
+may not score as expected, either.
+
+Rationale:
+
+Enabling "Show Wi-Fi status in menu bar" is a security awareness method that helps
+mitigate public area wireless exploits by making the user aware of their wireless
+connectivity status.
+
+Impact:
+
+The user of the system should have a quick check on their wireless network status
+available.
+
+2.4.2 Ensure Show Bluetooth Status in Menu Bar Is Enabled
+(Automated)
+Profile Applicability:
+• Level 1
+
+Description:
+
+By showing the Bluetooth status in the menu bar, a small Bluetooth icon is placed in the
+menu bar. This icon quickly shows the status of Bluetooth, and can allow the user to
+quickly turn Bluetooth on or off.
+
+Rationale:
+
+Enabling "Show Bluetooth status in menu bar" is a security awareness method that
+helps understand the current state of Bluetooth, including whether it is enabled,
+discoverable, what paired devices exist, and what paired devices are currently active.
+
+Impact:
+
+Bluetooth is a useful wireless tool that has been widely exploited when configured
+improperly. The user should have insight into the Bluetooth status.
+
+PLIST:
+Domain: com.apple.controlcenter
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Bluetooth</key>
+    <integer>18</integer>
+    <key>WiFi</key>
+    <integer>18</integer>
+</dict>
+</plist>

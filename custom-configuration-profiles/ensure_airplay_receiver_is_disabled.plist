@@ -1,0 +1,38 @@
+2.3.1.2 Ensure AirPlay Receiver Is Disabled (Automated)
+Profile Applicability:
+• Level 1
+Description:
+
+In macOS Monterey (12.0), Apple has added the capability to share content from
+another Apple device to the screen of a host Mac. While there are many valuable uses
+of this capability, such sharing on a standard Mac user workstation should be enabled
+ad hoc as required rather than allowing a continuous sharing service. The feature can
+be restricted by Apple ID or network and is configured to use by accepting the
+connection on the Mac. Part of the concern is frequent connection requests may
+function as a denial-of-service and access control limits may provide too much
+information to an attacker.
+https://macmost.com/how-to-use-a-mac-as-an-airplay-receiver.html
+https://support.apple.com/guide/mac-pro-rack/use-airplay-apdf1417128d/mac
+
+Rationale:
+
+This capability appears very useful for kiosk and shared work spaces. The ability to
+allow by network could be especially useful on segregated guest networks where
+visitors could share their screens on computers with bigger monitors, including
+computers connected to projectors.
+
+Impact:
+
+Turning off AirPlay sharing by default will not allow users to share without turning the
+service on. The service should be enable as needed rather than left on.
+
+PLIST:
+Domain: com.apple.applicationaccess
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>allowAirPlayIncomingRequests</key>
+	<false/>
+</dict>
+</plist>

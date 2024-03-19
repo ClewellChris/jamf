@@ -1,0 +1,42 @@
+6.4.1 Ensure Secure Keyboard Entry Terminal.app Is Enabled
+(Automated)
+Profile Applicability:
+• Level 1
+
+Description:
+
+Secure Keyboard Entry prevents other applications on the system and/or network from
+detecting and recording what is typed into Terminal. Unauthorized applications and
+malicious code could intercept keystrokes entered in the Terminal.
+
+Rationale:
+
+Enabling Secure Keyboard Entry minimizes the risk of a key logger detecting what is
+entered in Terminal.
+
+Impact:
+
+Enabling this in Terminal would prevent an application that is otherwise validly
+intercepting keyboard input from intercepting that input in Terminal.app. This could
+impact productivity tools.
+
+PLIST:
+Domain: com.apple.Terminal
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SecureKeyboardEntry</key>
+	<true/>
+</dict>
+</plist>
+
+Domain: com.googlecode.iterm2
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Secure Input</key>
+	<true/>
+</dict>
+</plist>

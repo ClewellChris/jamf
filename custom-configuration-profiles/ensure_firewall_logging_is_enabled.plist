@@ -1,0 +1,37 @@
+3.6 Ensure Firewall Logging Is Enabled and Configured
+(Automated)
+Profile Applicability:
+• Level 1
+
+Description:
+
+The socketfilter Firewall is what is used when the Firewall is turned on in the Security &
+Privacy Preference Pane. In order to appropriately monitor what access is allowed and
+denied, logging must be enabled. The logging level must be set to "detailed" to be
+useful in monitoring connection attempts that the firewall detects. Throttled login is not
+sufficient for examining Firewall connection attempts.
+In-depth log monitoring on macOS may require changes to the "Enable-Private-Data"
+key in SystemLogging.System to ensure more complete logging.
+Reviewing macOS Unified Logs
+
+Rationale:
+
+In order to troubleshoot the successes and failures of a Firewall, detailed logging should
+be enabled.
+
+Impact:
+
+Detailed logging may result in excessive storage.
+
+PLIST:
+Domain: com.apple.security.firewall
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>EnableLogging</key>
+	<true/>
+        <key>LoggingOption</key>
+        <string>detail</string>
+</dict>
+</plist>
