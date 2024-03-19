@@ -26,10 +26,12 @@
 # The nfs server is both a point of attack for the system and a means for unauthorized file
 # transfers.
 
-nfs_server=$(/usr/bin/sudo /bin/launchctl list | /usr/bin/grep -c com.apple.nfsd)
 
-if [ $nfs_server -eq 1 ]; then
-    echo "<result>Disabled</result>"
-else
-    echo "<result>Enabled</result>"
+# Stop the NFS server
+/usr/bin/sudo /sbin/nfsd stop
+/usr/bin/sudo /bin/launchctl disable system/com.apple.nfsd
+
+# Remove the /etc/exports file
+if [ -f /etc/exports ]; then
+    /usr/bin/sudo /bin/rm /etc/exports
 fi

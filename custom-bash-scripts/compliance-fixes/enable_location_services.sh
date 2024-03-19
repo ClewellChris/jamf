@@ -24,13 +24,5 @@
 # Location Services are helpful in most use cases and can simplify log and time
 # management where computers change time zones.
 
-locationservices=$(/usr/bin/sudo -u _locationd /usr/bin/osascript -l JavaScript << EOS
-$.NSUserDefaults.alloc.initWithSuiteName('com.apple.locationd').objectForKey(
-'LocationServicesEnabled').js
-EOS)
-
-if [ $locationservices == "true" ]; then
-    echo "<result>Enabled</result>"
-else
-    echo "<result>Disabled</result>"
-fi
+# Enable Location Services
+/usr/bin/sudo /bin/launchctl load -w /System/Library/LaunchDaemons/com.apple.locationd.plist

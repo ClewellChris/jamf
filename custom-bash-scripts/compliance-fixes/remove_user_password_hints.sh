@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # 2.11.1 Ensure Users' Accounts Do Not Have a Password Hint
 # (Automated)
 # Profile Applicability:
@@ -18,11 +17,10 @@
 # guess a user's password if there is a password hint. The password hint is very
 # susceptible to social engineering attacks and information exposure on social media
 # networks.
+#
+# This script will remove the password hints for the logged in user
 
-hints=$(/usr/bin/sudo /usr/bin/dscl . -list /Users hint)
 
-if [ -z "$hints" ]; then
-    echo "<result>No user hints found</result>"
-else
-    echo "<result>$hints</result>"
-fi
+
+LOGGED_IN_USER=$(stat -f %Su /dev/console)
+/usr/bin/sudo /usr/bin/dscl . -list /Users hint . -delete /Users/$LOGGED_IN_USER hint

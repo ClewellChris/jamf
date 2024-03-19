@@ -24,10 +24,7 @@
 # changes should not be performed where mission-critical applications are misconfigured.
 
 
-system_wide_application=$(/usr/bin/sudo /usr/bin/find /Applications -iname "*\.app" -type d -perm -2 -ls | grep -v Xcode.app |/usr/bin/wc -l | /usr/bin/xargs)
-
-if [ $system_wide_application -eq 0 ]; then
-    echo "<result>Passed</result>"
-else
-    echo "<result>Failed</result>"
-fi
+/usr/bin/sudo IFS=$'\n'
+for apps in $( /usr/bin/find /Applications -iname "*\.app" -type d -perm -2); do
+    /bin/chmod -R o-w "$apps"
+done

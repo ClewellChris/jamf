@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#!/bin/bash
+
 # 5.6 Ensure the "root" Account Is Disabled (Automated)
 # Profile Applicability:
 # • Level 1
@@ -24,9 +26,7 @@
 
 # Some legacy POSIX software might expect an available root account.
 
-rootCheck=`dscl . read /Users/root | grep AuthenticationAuthority 2>&1 > /dev/null ; echo $?`
-if [ "${rootCheck}" == 1 ]; then
-echo "<result>Disabled</result>"
-else
-echo "<result>Enabled</result>"
-fi
+/usr/bin/sudo /usr/sbin/dsenableroot -d
+
+username = root
+user password:

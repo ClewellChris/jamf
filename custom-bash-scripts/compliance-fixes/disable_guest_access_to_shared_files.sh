@@ -19,10 +19,5 @@
 # Impact:
 
 # Unauthorized users could access shared files on the system.
- 
- guest_access=$(/usr/bin/sudo /usr/sbin/sysadminctl -smbGuestAccess status | awk '{print $NF}')
-    if [ "$guest_access" == "DISABLED" ]; then
-        echo "<result>Disabled</result>"
-    else
-        echo "<result>Enabled</result>"
-    fi
+
+/usr/bin/sudo /usr/sbin/sysadminctl -smbGuestAccess off

@@ -32,10 +32,5 @@
 # users. Any support that relies on native MacOS components will not work unless a
 # scripted solution to enable and disable sharing as neccessary.
 
-screensharing=$(/usr/bin/sudo /bin/launchctl list | grep -c com.apple.screensharing)
-
-if [ $screensharing -eq 1 ]; then
-    echo "<result>Enabled</result>"
-else
-    echo "<result>Disabled</result>"
-fi
+# Disable Screen Sharing
+/usr/bin/sudo /bin/launchctl disable system/com.apple.screensharing

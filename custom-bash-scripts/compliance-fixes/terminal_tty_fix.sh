@@ -28,10 +28,7 @@
 # background processes are spawned with different interfaces than where sudo was
 # executed.
 
-timestamp=$(/usr/bin/sudo /usr/bin/sudo -V | /usr/bin/grep -c "Type of authentication
-timestamp record: tty")
-if [ $timestamp -eq 1 ]; then
-    echo "<result>Enabled</result>"
-else
-    echo "<result>Disabled</result>"
+terminalTTY=`cat /etc/sudoers | grep timestamp_type`
+if [ "$sudoTimeout" = "" ]; then
+	echo "Defaults timestamp_type=tty" >> /etc/sudoers
 fi

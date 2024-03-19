@@ -26,8 +26,8 @@
 # The Guest account should not be necessary after it is disabled, and it will be
 # automatically re-created if the Guest account is re-enabled
 
+
+# Remove the Guest home folder if it exists
 if [ -d /Users/Guest ]; then
-    echo "<result>Directory Exists</result>"
-else
-    echo "<result>Directory Does Not Exist</result>"
+    /usr/bin/sudo /bin/rm -R /Users/Guest
 fi

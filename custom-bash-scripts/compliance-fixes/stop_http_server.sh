@@ -26,10 +26,8 @@
 # The web server is both a point of attack for the system and a means for unauthorized
 # file transfers.
 
-http_server=$(/usr/bin/sudo /bin/launchctl list | /usr/bin/grep -c "org.apache.httpd")
 
-if [ $http_server -eq 1 ]; then
-    echo "<result>Enabled</result>"
-else
-    echo "<result>Disabled</result>"
-fi
+# Stop the HTTP server
+
+/usr/bin/sudo /usr/sbin/apachectl stop
+/usr/bin/sudo /bin/launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist
